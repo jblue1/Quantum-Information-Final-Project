@@ -4,6 +4,11 @@ import qiskit as qi
 
 
 def prepareState():
+    """Circuit to prepare the state (|00> - i|01>)/sqrt(2).
+
+    Returns:
+        qiskit.circuit.Gate: Gate to prepare initial state
+    """
     circ = qi.QuantumCircuit(2)
     circ.h(0)
     circ.rz(pi / 2, 0)
@@ -13,6 +18,14 @@ def prepareState():
 
 
 def trotterStep(dt):
+    """Circuit to evolve the state in time dt
+
+    Args:
+        dt (float): Time step
+
+    Returns:
+        qiskit.circuit.Gate: Gate to implement the time evolution
+    """
     circ = qi.QuantumCircuit(3)
     circ.rz(3 * dt, [0, 1])
     circ.h([0, 1])
@@ -27,6 +40,9 @@ def trotterStep(dt):
 
 
 def buildCircuit(finalPhase, numSteps):
+    """Produces a circuit to evolve a state for the given amount
+    of time using the given number of Trotter steps.
+    """
     dt = finalPhase / (2 * numSteps)
     circ = qi.QuantumCircuit(3, 2)
     prep_gate = prepareState()
@@ -41,6 +57,9 @@ def buildCircuit(finalPhase, numSteps):
 
 
 def getResults(counts):
+    """Calculate the expectation values of the spin along
+    the z axis for each site using the qiskit counts object.
+    """
     shots = 0
     firstQubit0s = 0
     firstQubit1s = 0
