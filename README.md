@@ -27,5 +27,5 @@ is shown below.
 
 <img src="https://github.com/jblue1/Quantum-Information-Final-Project/blob/main/imgs/VQEResults.png?raw=true" width=600>
 
-As seen in the figure above, the algorithm is unable to obtain a good upper bound of the ground state energies for large J/B ratios. An interesting
+As seen in the figure above, the VQE algorithm as implemented is having trouble obtaining a good upper bound of the ground state energies for large J/B ratios. An interesting
 extension would be to experiment with different circuits for preparing the trial state, such as the tensor network states proposed by [Liu, Zhang, Wan, and Wang](https://arxiv.org/abs/1902.02663). 
