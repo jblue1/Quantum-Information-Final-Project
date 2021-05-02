@@ -15,9 +15,14 @@ def usage(message):
     print(
         "    depth - Number of entangling layers to use in circuit preparing the trial state"
     )
+    sys.exit(1)
+
 
 
 def main():
+    if (len(sys.argv) != 3):
+        usage("Incorrect number of arguments")
+        
     numIters = int(sys.argv[1])
     depth = int(sys.argv[2])
     analyticJs = np.linspace(0, 1, 500)
