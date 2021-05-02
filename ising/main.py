@@ -26,7 +26,7 @@ def makePredictions(finalPhase, numSteps):
 
 def main():
     trueVals = trueValues()
-    fig, axes = plt.subplots(2,2, figsize=(12,8))
+    fig, axes = plt.subplots(2,2, figsize=(9,6), dpi=200)
     axes = axes.reshape(4)
     ax = 0
     for numSteps in [1, 3, 5, 10]:
