@@ -32,28 +32,5 @@ def calcMagnetization(state):
     z4 = np.kron(np.kron(I, I), np.kron(I, Z))
     expZ = 0
     for O in [z1, z2, z3, z4]:
-        #print(calcExpectation(state, O))
         expZ += calcExpectation(state, O)
     return expZ
-
-
-def main():
-    js = np.linspace(0, 1, 100)
-    energies = []
-    mags = []
-    for j in js:
-        H = buildHamiltonian(j, 1)
-        vals, vecs = np.linalg.eigh(H)
-        minIndex = np.argmin(vals)
-        energies.append(vals[minIndex])
-
-        netMag = calcMagnetization(vecs[:, minIndex])
-        mags.append(netMag)
-    
-    plt.plot(js, np.array(energies) - np.array(mags))
-    plt.show()
- 
-
-
-if __name__ == "__main__":
-    main()
